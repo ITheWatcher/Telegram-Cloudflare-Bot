@@ -1,4 +1,3 @@
-```
 # Telegram Cloudflare Detector Bot
 
 A Telegram bot that detects whether a given website is using Cloudflare services.
@@ -42,4 +41,3 @@ Contributions are welcome! If you have any suggestions, improvements, or feature
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
