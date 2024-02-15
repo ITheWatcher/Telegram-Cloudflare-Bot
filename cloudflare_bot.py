@@ -1,8 +1,9 @@
-import telebot
 import requests
+from urllib.parse import urlparse
+import telebot
 from telebot import types
 
-bot = telebot.TeleBot('YourBotToken')
+bot = telebot.TeleBot('YOUR_BOT_TOKEN')
 
 class CloudflareCheck:
     def __init__(self, url='https://example.com', timeout=5):
@@ -48,14 +49,18 @@ def recive(callback):
         else:
             bot.send_message(callback.message.chat.id, 'Fuck You Don\'t Miss With Me')
 
+
 def check_website_callback(message):
-    url = message.text.strip()
+    url = message.text.strip().lower()
+    url_parsed = urlparse(url)
+    domain = url_parsed.netloc.capitalize()
+
     checker = CloudflareCheck(url=url)
     cloudflare_detected = checker.check_website()
     if cloudflare_detected:
-        bot.send_message(message.chat.id, f"✅ Cloudflare Is Used In This Website. [{message.text.strip('htps:/w.com').upper()}]", parse_mode='Markdown')
+        bot.send_message(message.chat.id, f"✅ Cloudflare Is Used In This Website. {domain}", parse_mode='Markdown')
     else:
-        bot.send_message(message.chat.id, f"⛔ Cloudflare Is Not Used In This Website. [{message.text.strip('htps:/w.com').upper()}]", parse_mode='Markdown')
+        bot.send_message(message.chat.id, f"⛔ Cloudflare Is Not Used In This Website. {domain}", parse_mode='Markdown')
 
 bot.polling()
 
