@@ -53,7 +53,8 @@ def recive(callback):
 def check_website_callback(message):
     url = message.text.strip().lower()
     url_parsed = urlparse(url)
-    domain = url_parsed.netloc.capitalize()
+    domain = url_parsed.netloc.split('www.')[-1]
+    domain = domain.capitalize()
 
     checker = CloudflareCheck(url=url)
     cloudflare_detected = checker.check_website()
