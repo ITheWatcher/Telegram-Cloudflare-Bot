@@ -16,7 +16,10 @@ This Python script utilizes the Telebot library to create a Telegram bot capable
 ## Installation
 
 1. Clone or download the repository to your local machine.
-2. Install the required dependencies using pip:
+   ```
+    git clone https://github.com/ITheWatcher/Telegram-Cloudflare-Bot.git
+    ```
+3. Install the required dependencies using pip:
     ```
     pip install -r requirements.txt
     ```
